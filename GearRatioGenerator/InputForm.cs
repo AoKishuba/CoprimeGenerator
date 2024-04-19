@@ -56,6 +56,8 @@ namespace GearRatioGenerator
             }
 
             writer.Close();
+
+            ShowFilenameAndDirectory(fileName);
         }
 
         /// <summary>
@@ -66,6 +68,22 @@ namespace GearRatioGenerator
         private void MinTeethUD_ValueChanged(object sender, EventArgs e)
         {
             MaxTeethUD.Minimum = MinTeethUD.Value;
+        }
+
+        /// <summary>
+        /// Creates popup message displaying filename and directory of output file
+        /// </summary>
+        /// <param name="fileName">Auto-generated filename of text file containing output</param>
+        static void ShowFilenameAndDirectory(string fileName)
+        {
+            // Initialize MessageBox variables
+            string directoryName = Directory.GetCurrentDirectory();
+            string message = $"File {fileName} has been saved at {directoryName}";
+            string caption = "Procedure Created";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+
+            // Dispay MessageBox
+            MessageBox.Show(message, caption, buttons);
         }
     }
 }
